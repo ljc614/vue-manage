@@ -10,7 +10,7 @@
     text-color="#fff"
     active-text-color="#ffd04b"
   >
-  <h3>通用后台管理系统</h3>
+  <h3> {{ !isCollapse ? '通用后台管理' : '后台' }} </h3>
     <el-menu-item
       
       v-for="item in noChildren"
@@ -34,7 +34,7 @@
       </template>
 
       <el-menu-item-group v-for="subItem in item.children" :key="subItem.path">
-        <el-menu-item :index="subItem.path">{{ subItem.label }}</el-menu-item>
+        <el-menu-item @click="changeMenu(subItem)" :index="subItem.path">{{ subItem.label }}</el-menu-item>
       </el-menu-item-group>
     </el-submenu>
   </el-menu>
@@ -45,7 +45,7 @@ export default {
   data() {
     return {
       // 是否折叠菜单
-      isCollapse: false,
+      // isCollapse: false,
       menuData: [
         {
           path: "/",
@@ -99,8 +99,11 @@ export default {
       console.log(key, keyPath);
     },
     changeMenu(item){
-      this.$router.push(item.path)
-      console.log(item)
+      if (this.$route.path !== item && !(this.$route.path === '/home' && (item.path === '/'))) {
+        this.$router.push(item.path)
+        console.log(item)
+      }
+      
     }
   },
   computed: {
@@ -112,11 +115,16 @@ export default {
     hasChildren() {
       return this.menuData.filter((item) => item.children);
     },
+    //vuex获取数据
+    isCollapse(){
+      return this.$store.state.tab.isCollapse
+    }
   },
 };
 </script>
 
 <style lang="less" scoped>
+
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;
   min-height: 400px;
@@ -132,5 +140,7 @@ export default {
     margin-block-start:0;
     margin-block-end:0;
   }
+  border-right: none;
 }
+
 </style>

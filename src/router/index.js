@@ -14,13 +14,15 @@ const routes = [
   {
     path: "/",
     component: Main,
+    // 重定向
+    redirect:'/home',
     // 子路由不带'/'
     children: [
       { path: "home", component: Home },
       { path: "User", component: User },
       { path: "mall", component: Mall },
-      { path: "PageOne", component: PageOne },
-      { path: "PageTwo", component: PageTwo },
+      { path: "Page1", component: PageOne },
+      { path: "Page2", component: PageTwo },
     ],
   },
 ];
