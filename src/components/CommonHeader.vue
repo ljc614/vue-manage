@@ -2,13 +2,13 @@
   <div class="header-container">
     <div class="l-content">
       <el-button
-        @click="handleMenu"
         icon="el-icon-menu"
         size="mini"
       ></el-button>
       <el-breadcrumb separator="/">
-        <el-breadcrumb-item v-for="item in tags" :key="item.path" 
-        >{{item.label}}
+        <el-breadcrumb-item v-for="item in tags" :key="item.path"  >
+          <router-link :to="item.path">{{item.label}}</router-link>
+        
         </el-breadcrumb-item>
 
       </el-breadcrumb>
@@ -36,20 +36,26 @@
 import {mapState} from 'vuex'
 export default {
   data() {
-    return {};
+    return {
+      
+    };
   },
-  methods: {
-    handleMenu() {
-      this.$store.commit("collapseMenu");
-      console.log(this.$store.state.tab);
-    },
+
+  methods:{
+    changeMenu(item){
+      if (this.$route.path !== item.path && !(this.$route.path === '/home' && (item.path === '/'))) {
+        this.$router.push(item.path)
+      }
+      this.$store.commit('clickMenu',[this.$route.path,item.path])
+    }
   },
   computed:{
     //tags:别名 后面跟函数 再用拓展运算符...进行解构
     // 这样就拥有了state中的tabList 别名tags
     ...mapState({
       tags: state => state.tab.tabList
-    })
+    }),
+    
   }
 };
 </script>
@@ -79,12 +85,12 @@ export default {
     display: flex; 
     align-items: center;
     /deep/ .el-breadcrumb__item{
-      .el-breadcrumb__inner{
+      .el-breadcrumb__inner a{
         font-weight: normal ;
         color:#666;
       }
       &:last-child{
-        .el-breadcrumb__inner{
+        .el-breadcrumb__inner a{
           color: #fff;
         }
       }
