@@ -18,11 +18,11 @@ const routes = [
     redirect:'home',
     // 子路由不带'/'
     children: [
-      { path: "home", component: Home },
-      { path: "User", component: User },
-      { path: "mall", component: Mall },
-      { path: "Page1", component: PageOne },
-      { path: "Page2", component: PageTwo },
+      { path: "home",name:"home", component: Home },
+      { path: "user",name:"user", component: User },
+      { path: "mall",name:"mall" ,component: Mall },
+      { path: "page1",name:"page1", component: PageOne },
+      { path: "page2",name:"page2", component: PageTwo },
     ],
   },
 ];
