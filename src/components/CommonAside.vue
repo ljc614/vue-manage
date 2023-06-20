@@ -73,14 +73,14 @@ export default {
           icon: "location",
           children: [
             {
-              path: "page1",
+              path: "/page1",
               name: "page1",
               label: "页面1",
               icon: "setting",
               url: "Other/PageOne",
             },
             {
-              path: "page2",
+              path: "/page2",
               name: "page2",
               label: "页面2",
               icon: "setting",
@@ -99,9 +99,8 @@ export default {
       console.log(key, keyPath);
     },
     changeMenu(item){
-      if (this.$route.path !== item && !(this.$route.path === '/home' && (item.path === '/'))) {
+      if (this.$route.path !== item.path && !(this.$route.path === '/home' && (item.path === '/'))) {
         this.$router.push(item.path)
-        console.log(item)
       }
       
     }
