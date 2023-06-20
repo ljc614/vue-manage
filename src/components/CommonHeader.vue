@@ -8,7 +8,7 @@
       ></el-button>
       <el-breadcrumb separator="/">
         <el-breadcrumb-item v-for="item in tags" :key="item.path" 
-        :to="{ path: item.path }">{{item.label}}
+        >{{item.label}}
         </el-breadcrumb-item>
 
       </el-breadcrumb>
