@@ -7,6 +7,8 @@ import Mall from "@/views/Mall";
 import PageOne from "@/views/PageOne";
 import PageTwo from "@/views/PageTwo";
 import VueRouter from "vue-router";
+import Login from '@/views/Login'
+
 Vue.use(Router);
 //创建路由表
 const routes = [
@@ -25,6 +27,11 @@ const routes = [
       { path: "page2",name:"page2", component: PageTwo },
     ],
   },
+  {
+    path:"/login",
+    component: Login
+
+  }
 ];
 
 //创建router实例
