@@ -122,7 +122,6 @@ export default {
     getData().then((res) => {
       const { tableData,userData,videoData } = res.data.data;
       this.tableData = tableData;
-      console.log('v',res.data.data);
       // 初始化echarts
       var echarts1 = echarts.init(this.$refs.echarts1);
 
@@ -130,7 +129,6 @@ export default {
       //处理数据xAxis(x轴)
       const { orderData } = res.data.data;
       // object.key返回元素的key值
-      console.log("order", orderData.data[0]);
       const xAxis = Object.keys(orderData.data[0]);
       const xAxisData = {
         data: xAxis,

@@ -198,7 +198,7 @@ export default {
           const { list } = res.data;
           this.tableData = list;
           this.total = res.data.count || 0;
-          console.log(this.total);
+
         }
       );
     },
@@ -207,7 +207,7 @@ export default {
       this.dialogVisible = true;
     },
     handlePage(currentPage) {
-      console.log(currentPage);
+
       this.pageData.page = currentPage;
       this.getList();
     },

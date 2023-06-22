@@ -1,12 +1,12 @@
 <template>
-    <h1>我是pageOne</h1>
+    <h1>我是pageTwo</h1>
 </template>
 
 <script>
 export default{
    data(){
     return{
-      msg:'我是pageOne'
+      msg:'我是pageTwo'
     }       
    }
 }
