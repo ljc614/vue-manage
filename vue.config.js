@@ -3,3 +3,8 @@ module.exports = defineConfig({
   transpileDependencies: true,
   lintOnSave:false
 })
+module.exports = {
+  devServer: {
+    disableHostCheck: true
+  }
+};
